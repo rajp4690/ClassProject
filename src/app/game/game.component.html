@@ -12,10 +12,10 @@
 
   <div class="col-md-8">
     <div class="card">
-        <div class="card-header">Played Quotes</div>
+        <div class="card-header">Player Name --> Played Quotes</div>
         <ul class="list-group list-group-flush">
-          <li *ngFor="let quote of Model.MyQuotes" class="list-group-item">
-            {{quote}}
+          <li *ngFor="let quote of Model.PlayedQuotes" class="list-group-item">
+            {{quote.PlayerName}} --> {{quote.Text}}
           </li>
         </ul>
     </div>
