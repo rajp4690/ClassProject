@@ -1,29 +1,25 @@
 
 export class Game {
-    MyQuotes:string[] = [
+    MyQuotes: string[] = [
         "Great minds think alike, but ...",
         "Axis of Evil",
-        "What a save!"
+        "You wot mate xD",
+        "What a save!",
+        "I know da way!"
     ];
-    Players:User[] = [];
-    Picture:string = 'https://images6.alphacoders.com/863/thumb-1920-863542.png';
-    PlayedQuotes:Quote[] = [
-        new Quote('I know da way!', 'Raj', true),
-        new Quote('You wot mate xD', 'Diku', true)
+    Players :User[] = [
+        { Name: 'Raj' }
     ];
+    Picture: string = 'https://images6.alphacoders.com/863/thumb-1920-863542.png';
+    PlayedQuotes:Quote[] = [];
 }
 
 export class User {
-    Name:string;
+    Name: string;
 }
 
 export class Quote {
-    Text:string;
-    PlayerName:string;
-    Chosen:boolean = false;
-    constructor(text:string, playerName:string, chosen:boolean) {
-        this.Text = text;
-        this.PlayerName = playerName;
-        this.Chosen = chosen;
-    }
+    Text: string;
+    PlayerName: string;
+    Chosen: boolean = false;
 }
