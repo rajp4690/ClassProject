@@ -8,10 +8,15 @@ export class Game {
         "I know da way!"
     ];
     Players :User[] = [
-        { Name: 'Raj' }
+        { Name: 'Raj' },
+        { Name: 'Diku' },
+        { Name: 'Rocketeer' }
     ];
+    Dealer: string = "Raj";
     Picture: string = 'https://images6.alphacoders.com/863/thumb-1920-863542.png';
-    PlayedQuotes:Quote[] = [];
+    PlayedQuotes:Quote[] = [
+        { Text: "Lagging", PlayerName: 'Diku', Chosen: false }
+    ];
 }
 
 export class User {
