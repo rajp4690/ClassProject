@@ -5,7 +5,7 @@
       <ul class="list-group list-group-flush my-quotes">
         <li *ngFor="let quote of Model.MyQuotes"
         (click)="submitQuote($event, quote)"
-        [ngClass]="{ enabled: !MyPlayedQuote() }" 
+        [ngClass]="{ enabled: !MyPlayedQuote() }"
         class="list-group-item ">
           {{quote}}
         </li>
@@ -17,7 +17,7 @@
     <div class="card bg-primary mb-3">
         <div class="card-header text-white">Player Name --> Played Quotes</div>
         <ul class="list-group list-group-flush">
-          <li *ngFor="let quote of Model.PlayedQuotes" 
+          <li *ngFor="let quote of Model.PlayedQuotes"
           [ngClass]="{ 'list-group-item-success': quote.Chosen }"
           class="list-group-item d-flex justify-content-between align-item-center">
             {{quote.Text}}
@@ -35,7 +35,7 @@
     </div>
   </div>
 
-  <div class="col-md-4">     
+  <div class="col-md-4">
     <div class="card" >
         <div class="card-header">Other Players</div>
         <ul class="list-group list-group-flush">
@@ -45,6 +45,6 @@
             </li>
         </ul>
     </div>
-</div>
+  </div>
 
 </div>
