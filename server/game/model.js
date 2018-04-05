@@ -1,3 +1,5 @@
+var axios = require('axios');
+
 const QuotesStack =  [
   "Wisdom is the reward you get for a lifetime of listening when you'd have preferred to talk. -Doug Larson",
   "If you make listening and observation your occupation, you will gain much more than you can by talk. -Robert Baden-Powell",
@@ -103,21 +105,31 @@ const QuotesStack =  [
 
 var iCurrentQuote = 0;
 
-const PicturesStack = [
-
+var PicturesStack = [
+    "https://rocketleaguemods.com/wp-content/uploads/cmdm/167940/1507295956_20171005175501_1-1600x900.jpg",
+    "https://rocketleaguemods.com/wp-content/uploads/cmdm/167940/1507295956_20171005175501_1-1600x900.jpg"
 ];
+
+axios.get('https://api.imgflip.com/get_memes')
+    .then(response => PicturesStack = response.data.data.memes);
+
 var iCurrentPicture = 0;
 
-// class Game {
-//     Players = [];
-//     DealerId = '';
-//
-//     PlayedQuotes = [];
-//     Picture = '';
-//
-//     GetQuotes = () => QuotesStack.slice(iCurrentQuote, iCurrentQuote += 7);
-// }
+function Game() {
+        this.Players = [];
+        this.DealerId = null;
 
-var GetQuotes = () => QuotesStack.slice(iCurrentQuote, iCurrentQuote += 7);
+        this.PlayedQuotes = [];
+        this.Picture = null;
 
-module.exports.GetQuotes = GetQuotes;
+        this.GetQuotes = () => QuotesStack.slice(iCurrentQuote, iCurrentQuote += 7);
+        this.FlipPicture = () => this.Picture = PicturesStack[iCurrentPicture = (iCurrentPicture + 1) % PicturesStack.length];
+
+        this.SubmitQuote = (text, playerId) => this.PlayedQuotes.push({ Text: text, PlayerId: playerId });
+        this.ChooseQuote = text => {
+            this.PlayedQuotes.find(x => x.Text === text).Chosen = true;
+            this.DealerId = this.Players[this.DealerId = (this.DealerId + 1) % this.Players.length];
+        }
+}
+
+module.exports = Game;
