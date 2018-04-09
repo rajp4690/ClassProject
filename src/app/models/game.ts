@@ -1,16 +1,9 @@
 
 export class Game {
-    MyQuotes: string[] = [
-        "Great minds think alike, but ...",
-        "Axis of Evil",
-        "You wot mate xD",
-        "What a save!",
-        "I know da way!"
-    ];
     Players :User[] = [
-        { Name: 'Raj' },
-        { Name: 'Diku' },
-        { Name: 'Rocketeer' }
+        { Name: 'Raj', MyQuotes: []},
+        { Name: 'Diku', MyQuotes: []},
+        { Name: 'Rocketeer', MyQuotes: []}
     ];
     Dealer: string = "Raj";
     Picture: string = 'https://images6.alphacoders.com/863/thumb-1920-863542.png';
@@ -21,6 +14,7 @@ export class Game {
 
 export class User {
     Name: string;
+    MyQuotes: string[];
 }
 
 export class Quote {
