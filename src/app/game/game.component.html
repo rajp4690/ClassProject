@@ -32,6 +32,9 @@
 
     <div class="card">
       <img class="card-img-top card-img-bottom" [src]="Model.Picture.url">
+      <div class="card-img-overlay" style="text-align: center">
+        <button class="btn btn-danger btn-lg" (click)="flipPicture($event)">Flip Picture</button>
+      </div>
     </div>
   </div>
 
