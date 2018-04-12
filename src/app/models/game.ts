@@ -6,7 +6,9 @@ export class Game {
         { Name: 'Rocketeer', MyQuotes: []}
     ];
     Dealer: string = "Raj";
-    Picture: string = 'https://images6.alphacoders.com/863/thumb-1920-863542.png';
+    Picture: {
+        url: string
+    };
     PlayedQuotes:Quote[] = [
         { Text: "Lagging", PlayerName: 'Diku', Chosen: false }
     ];
