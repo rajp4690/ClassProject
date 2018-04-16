@@ -1,17 +1,11 @@
 
 export class Game {
-    Players :User[] = [
-        { Name: 'Raj', MyQuotes: []},
-        { Name: 'Diku', MyQuotes: []},
-        { Name: 'Rocketeer', MyQuotes: []}
-    ];
-    Dealer: string = "Raj";
+    Players :User[];
+    DealerId: string;
     Picture: {
         url: string
     };
-    PlayedQuotes:Quote[] = [
-        { Text: "Lagging", PlayerName: 'Diku', Chosen: false }
-    ];
+    PlayedQuotes:Quote[];
 }
 
 export class User {
@@ -21,6 +15,6 @@ export class User {
 
 export class Quote {
     Text: string;
-    PlayerName: string;
+    PlayerId: string;
     Chosen: boolean = false;
 }
