@@ -10,6 +10,20 @@ module.exports = app
     .get('/state', (req, res) => res.send(game))
     .post('/picture', (req, res) => res.send(game.FlipPicture()))
     .post('/quotes', (req, res) => {
-        game.SubmitQuote(req.body.Text, req.body.PlayerId);
-        res.send({ success: true });
+        try {
+            game.SubmitQuote(req.body.Text, req.body.PlayerId);
+            res.send({ success: true });
+        }
+        catch (error) {
+            res.status(403).send({ success: false, message: error.message });
+        }
+    })
+    .post('/quotes/choose', (req, res) => {
+        if(req.body.PlayerId != game.DealerId) {
+            res.status(403).send({ success: false, message: error.message });
+        }
+        else {
+            game.ChooseQuote(req.body.Text);
+            res.send({ success: true });
+        }
     });

@@ -9,7 +9,7 @@
       <ul class="list-group list-group-flush my-quotes">
         <li *ngFor="let quote of Me.MyQuotes"
         (click)="submitQuote($event, quote)"
-        [ngClass]="{ enabled: !MyPlayedQuote() }"
+        [ngClass]="{ enabled: !MyPlayedQuote() && !IAmTheDealer() }"
         class="list-group-item ">
           {{quote}}
         </li>
@@ -28,7 +28,7 @@
           <span *ngIf="!IsEveryoneDone() || (!IAmTheDealer() && !ChosenQuote())" class="badge badge-light">hidden</span>
           <span *ngIf="ChosenQuote()" class="badge badge-primary">{{quote.PlayerId}}</span>
           <button *ngIf="IsEveryoneDone() && IAmTheDealer() && !ChosenQuote()"
-          (click)="quote.Chosen = true"
+          (click)="chooseQuote($event, quote)"
           class="btn btn-primary btn-sm">Choose</button>
           </li>
         </ul>
@@ -37,7 +37,8 @@
     <div class="card">
       <img class="card-img-top card-img-bottom" *ngIf="Model.Picture" [src]="Model.Picture.url">
       <div class="card-img-overlay" style="text-align: center">
-        <button class="btn btn-danger btn-lg" (click)="flipPicture($event)">Flip the Picture</button>
+        <button class="btn btn-danger btn-lg" (click)="flipPicture($event)"
+        *ngIf="IAmTheDealer() && (Model.PlayedQuotes.length === 0 || ChosenQuote())">Flip the Picture</button>
       </div>
     </div>
   </div>
@@ -49,6 +50,9 @@
             <li *ngFor="let player of Model.Players" class="list-group-item">
                 <img style="height: 16px; width: 16px" class="rounded">
                 {{player.Name}}
+                <i class="badge float-right" [ngClass]="player.PlayerId === Model.DealerId ? 'badge-warning' : 'badge-info'">
+                  {{player.Score}}
+                </i>
             </li>
         </ul>
     </div>
