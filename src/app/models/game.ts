@@ -1,7 +1,7 @@
 
 export class Game {
     Players :User[];
-    DealerId: number;
+    DealerId: string;
     Picture: {
         url: string
     };
@@ -11,7 +11,6 @@ export class Game {
 export class User {
     Name: string;
     MyQuotes: string[];
-    DealerId: number;
 }
 
 export class Quote {
