@@ -9,6 +9,8 @@ import { Router } from '@angular/router';
 export class GameService {
 
   Me: User;
+  token: string;
+  pic: string;
 
   constructor(private htttp: Http, private _Messages: MessagesService, private _Router: Router) { }
 
@@ -18,6 +20,13 @@ export class GameService {
       this.Me = { Name: name, MyQuotes: []};
       this._Router.navigate(['/game']);
     }
+  }
+
+  oAuthLogin(name: string, token: string, pic: string) {
+    this.Me = { Name: name, MyQuotes: []};
+    this.pic = pic;
+    this.token = token;
+    this._Router.navigate(['/game']);
   }
 
 }
